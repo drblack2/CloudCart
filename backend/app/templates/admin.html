@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CloudCart Admin Dashboard</title>
+
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h2>CloudCart</h2>
+        <p class="admin-label">ADMIN PANEL</p>
+
+        <a href="#overview">Dashboard</a>
+        <a href="#products">Products</a>
+        <a href="#orders">Orders</a>
+        <a href="#customers">Customers</a>
+
+        <a href="/" class="store-link">View Store</a>
+        <button id="logoutBtn" class="logout">Logout</button>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p>Manage your CloudCart store</p>
+            </div>
+            <span id="adminName">Administrator</span>
+        </header>
+
+        <section id="overview">
+            <div class="stats">
+
+                <div class="stat-card">
+                    <p>Total Revenue</p>
+                    <h2 id="revenue">₹0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Total Orders</p>
+                    <h2 id="totalOrders">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Total Products</p>
+                    <h2 id="totalProducts">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Customers</p>
+                    <h2 id="totalCustomers">0</h2>
+                </div>
+
+                <div class="stat-card warning">
+                    <p>Low Stock Products</p>
+                    <h2 id="lowStock">0</h2>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="products" class="panel">
+            <div class="section-heading">
+                <h2>Product Management</h2>
+                <button id="addProductBtn">+ Add Product</button>
+            </div>
+
+            <div id="productForm" class="product-form hidden">
+                <input id="productId" type="hidden">
+
+                <input id="productName" placeholder="Product name">
+                <input id="productPrice" type="number" min="0.01" step="0.01" placeholder="Price">
+                <input id="productStock" type="number" min="0" placeholder="Stock">
+                <input id="productImage" placeholder="Image URL">
+
+                <textarea id="productDescription" placeholder="Description"></textarea>
+
+                <button id="saveProductBtn">Save Product</button>
+                <button id="cancelProductBtn" class="secondary">Cancel</button>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="orders" class="panel">
+            <h2>Order Management</h2>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="customers" class="panel">
+            <h2>Customers</h2>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <div id="message" class="message"></div>
+
+    </main>
+</div>
+
+<script src="/static/js/admin.js"></script>
+</body>
+</html>

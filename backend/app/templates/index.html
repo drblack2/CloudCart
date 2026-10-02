@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudCart | Shop Smart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="navbar">
+    <a class="brand" href="/">Cloud<span>Cart</span>.</a>
+
+    <div class="search">
+        <input id="searchInput" type="search" placeholder="Search products...">
+        <button id="searchBtn">Search</button>
+    </div>
+
+    <nav>
+        <button class="nav-btn" id="ordersBtn">My Orders</button>
+        <button class="nav-btn cart-nav" id="cartBtn">Cart <span id="cartCount">0</span></button>
+        <button class="nav-btn" id="loginBtn">Login</button>
+        <button class="nav-btn hidden" id="logoutBtn">Logout</button>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div>
+            <p class="eyebrow">YOUR EVERYDAY MARKETPLACE</p>
+            <h1>Everything you need.<br><span>Delivered simply.</span></h1>
+            <p class="hero-text">Discover everyday essentials, tech accessories, and more with CloudCart.</p>
+            <button class="primary-btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+                Explore Products
+            </button>
+        </div>
+        <div class="hero-art">
+            <div class="hero-circle">CC</div>
+            <div class="floating-card">Your cart, your way <span>🛍️</span></div>
+        </div>
+    </section>
+
+    <section class="section" id="products">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">CURATED FOR YOU</p>
+                <h2>Featured Products</h2>
+            </div>
+            <span id="productCount" class="muted"></span>
+        </div>
+        <div id="productGrid" class="product-grid">
+            <p>Loading products...</p>
+        </div>
+    </section>
+
+    <section class="section panel hidden" id="cartPanel">
+        <div class="section-heading">
+            <h2>Your Shopping Cart</h2>
+            <button class="text-btn" id="closeCart">Close</button>
+        </div>
+        <div id="cartItems"></div>
+        <div class="cart-footer">
+            <strong>Total: <span id="cartTotal">₹0.00</span></strong>
+            <button class="primary-btn" id="checkoutBtn">Place Order</button>
+        </div>
+    </section>
+
+    <section class="section panel hidden" id="ordersPanel">
+        <div class="section-heading">
+            <h2>Order History</h2>
+            <button class="text-btn" id="closeOrders">Close</button>
+        </div>
+        <div id="ordersList"></div>
+    </section>
+</main>
+
+<div class="modal hidden" id="authModal">
+    <div class="modal-card">
+        <button class="modal-close" id="closeModal">×</button>
+        <p class="eyebrow">WELCOME TO CLOUDCART</p>
+        <h2 id="authTitle">Login</h2>
+
+        <form id="authForm">
+            <div id="usernameField" class="hidden">
+                <label for="username">Username</label>
+                <input id="username" autocomplete="username">
+            </div>
+
+            <label for="email">Email</label>
+            <input id="email" type="email" required autocomplete="email">
+
+            <label for="password">Password</label>
+            <input id="password" type="password" required autocomplete="current-password">
+
+            <button class="primary-btn full-btn" id="authSubmit" type="submit">Login</button>
+        </form>
+
+        <p class="switch-auth" id="switchAuth">New here? <button type="button">Create account</button></p>
+    </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<footer>
+    <a class="brand" href="/">Cloud<span>Cart</span>.</a>
+    <p>Simple shopping. Smarter experience.</p>
+    <small>CloudCart Portfolio Project</small>
+</footer>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
